@@ -1,12 +1,10 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import Task.FileSearch;
-
-public class bj_1003 {
+public class BJ_1003 {
 	static int[] pbArr;
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {

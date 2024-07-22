@@ -1,4 +1,4 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 
-public class bj_1927 {
+public class BJ_1927 {
 
 	public static void main(String[] args) {
 		try {

@@ -1,4 +1,4 @@
-package class2;
+package boj.class2;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
-public class bj_10989_1 {
+public class BJ_10989_1 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		/*
 		 * Arrays.sort : Dual-Pivot Quicksort

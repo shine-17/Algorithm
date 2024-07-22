@@ -1,10 +1,10 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class bj_2630 {
+public class BJ_2630 {
 	
 	private static int[][] confetti;
 	

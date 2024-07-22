@@ -1,11 +1,11 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class bj_1012 {
+public class BJ_1012 {
 	static int[][] field;
 	static boolean[][] visit;
 	

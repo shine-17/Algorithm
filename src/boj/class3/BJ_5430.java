@@ -1,11 +1,11 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class bj_5430 {
+public class BJ_5430 {
 
 	public static void main(String[] args) {
 		

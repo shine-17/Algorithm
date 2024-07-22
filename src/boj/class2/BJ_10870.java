@@ -1,10 +1,10 @@
-package class2;
+package boj.class2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class bj_10870 {
+public class BJ_10870 {
 	static int[] pbArr;
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {

@@ -1,4 +1,4 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class bj_1260 {
+public class BJ_1260 {
 	static ArrayList<Integer>[] graph;
 	static boolean[] visited;
 	static ArrayList<Integer> DFS_Arr = new ArrayList<Integer>();

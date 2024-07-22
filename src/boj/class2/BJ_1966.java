@@ -1,4 +1,4 @@
-package class2;
+package boj.class2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 
-public class bj_1966 {
+public class BJ_1966 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		//테스트케이스 수

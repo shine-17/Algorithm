@@ -1,9 +1,9 @@
-package class1;
+package boj.class1;
 
 import java.util.Scanner;
 import java.util.*;
 
-public class bj_1546 {
+public class BJ_1546 {
   public static void main(String[] args) {
     Scanner scan=new Scanner(System.in);
     int n=scan.nextInt();

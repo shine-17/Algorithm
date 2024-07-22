@@ -1,11 +1,11 @@
-package class2;
+package boj.class2;
 
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.io.BufferedReader;
 
-public class bj_2231 {
+public class BJ_2231 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());

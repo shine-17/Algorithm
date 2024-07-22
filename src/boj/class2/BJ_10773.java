@@ -1,4 +1,4 @@
-package class2;
+package boj.class2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.Stack;
 
-public class bj_10773 {
+public class BJ_10773 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int k = Integer.parseInt(br.readLine());

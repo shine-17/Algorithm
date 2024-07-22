@@ -1,10 +1,10 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class bj_1463 {
+public class BJ_1463 {
 	static Integer[] dp; //메모이제이션 배열
 
 	public static void main(String[] args) throws NumberFormatException, IOException {

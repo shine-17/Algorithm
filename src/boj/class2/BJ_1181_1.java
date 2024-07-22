@@ -1,9 +1,9 @@
-package class2;
+package boj.class2;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class bj_1181_1 {
+public class BJ_1181_1 {
 	static String[] wordArr;
 
 	public static void main(String[] args) throws Exception {

@@ -1,9 +1,9 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class bj_2579 {
+public class BJ_2579 {
 	private static int[] stairs;
 	
 	private static Integer[] dp;

@@ -1,10 +1,10 @@
-package class2;
+package boj.class2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class bj_15829 {
+public class BJ_15829 {
 	static final int m = 1234567891;
 
 	public static void main(String[] args) throws NumberFormatException, IOException {

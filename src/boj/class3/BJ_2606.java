@@ -1,4 +1,4 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class bj_2606 {
+public class BJ_2606 {
 	
 	private static List<List<Integer>> network = new ArrayList<List<Integer>>();
 	

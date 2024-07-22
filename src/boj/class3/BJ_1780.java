@@ -1,9 +1,9 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class bj_1780 {
+public class BJ_1780 {
 	private static int countN = 0, countZ = 0, countP = 0; // -1 , 0 , 1
 	
 	private static final int cutCount = 9;

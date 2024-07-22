@@ -1,4 +1,4 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class bj_2667 {
+public class BJ_2667 {
 	
 	private static int n;
 	private static int[][] apartArr;

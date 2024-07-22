@@ -1,4 +1,4 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class bj_1170 {
+public class BJ_1170 {
 	static List<Integer> numArr = new ArrayList<Integer>();
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {

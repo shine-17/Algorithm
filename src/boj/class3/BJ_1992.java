@@ -1,9 +1,9 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class bj_1992 {
+public class BJ_1992 {
 	
 	private static int[][] quadTree;
 	

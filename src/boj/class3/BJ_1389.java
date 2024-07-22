@@ -1,4 +1,4 @@
-package class3;
+package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class bj_1389 {
+public class BJ_1389 {
 	static List<ArrayList<Integer>> friends = new ArrayList<ArrayList<Integer>>();
 	static List<Boolean> visited = new ArrayList<Boolean>();
 	static ArrayList<Integer> check = new ArrayList<Integer>();

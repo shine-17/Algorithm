@@ -1,9 +1,9 @@
-package class2;
+package boj.class2;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class bj_1085 {
+public class BJ_1085 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
