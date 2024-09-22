@@ -1,4 +1,4 @@
-package boj.datastructure;
+package datastructure;
 
 import java.util.Queue;
 
