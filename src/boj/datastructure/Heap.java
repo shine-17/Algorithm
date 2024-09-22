@@ -1,4 +1,4 @@
-package datastructure;
+package boj.datastructure;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -10,8 +10,8 @@ import java.util.NoSuchElementException;
  * Keyword: 최솟값 또는 최댓값, 빠르게, 완전이진트리
  */
 public class Heap<E> {
-	
-	
+
+
 	private final Comparator<? super E> comparator;
 	private static final int DEFAULT_CAPACITY = 10; // 최소(기본) 용적 크기
 	
@@ -91,7 +91,7 @@ public class Heap<E> {
 	/**
 	 * 상향 선별
 	 * 
-	 * @param inx 	 추가할 노드의 인덱스
+	 * @param idx 	 추가할 노드의 인덱스
 	 * @param target 재배치할 노드
 	 */
 	private void siftUp(int idx, E target) {
@@ -153,7 +153,14 @@ public class Heap<E> {
 		}
 		
 		E result = (E) array[1]; // 삭제된 요소를 반환하기 위한 임시 변수(root 노드)
-		E target = (E) array[size]; // 타겟이 될 요소
+		E target; // 타겟이 될 요소
+
+		if(size == 1) {
+			target = null;
+		}
+		else {
+			target = (E) array[size];
+		}
 		array[size] = null; // 타겟 노드를 비운다.
 		
 		// 삭제할 노드의 인덱스와 이후 재배치할 타겟 노드를 넘겨준다.
@@ -161,7 +168,33 @@ public class Heap<E> {
 		
 		return result;
 	}
-	
+
+	public void remove(E value) {
+		if(array == null || size == 0) { // 만약 root가 비어있을 때 예외를 던지도록 함
+			throw new NoSuchElementException();
+		}
+
+		int index = 0;
+		E target; // 타겟이 될 요소
+
+		for(int i=0; i<size; i++) {
+			if(value == (E) array[i]) {
+				index = i;
+			}
+		}
+
+		if(size == 1) {
+			target = null;
+		}
+		else {
+			target = (E) array[size];
+		}
+		array[size] = null; // 타겟 노드를 비운다.
+
+		// 삭제할 노드의 인덱스와 이후 재배치할 타겟 노드를 넘겨준다.
+		siftDown(index, target);
+	}
+
 	/**
 	 * @param idx	삭제할 노드의 인덱스 
 	 * @param target	재배치 할 노드

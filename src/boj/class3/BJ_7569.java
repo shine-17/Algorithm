@@ -102,28 +102,29 @@ public class BJ_7569 {
 
         return ripenCount;
     }
-}
 
-class Tomato {
-    int x;
-    int y;
-    int z;
+    static class Tomato {
+        int x;
+        int y;
+        int z;
 
-    public Tomato(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if(obj instanceof Tomato) {
-            Tomato tomato = (Tomato) obj;
-            if(this.x != tomato.x) return false;
-            if(this.y != tomato.y) return false;
-            return this.z == tomato.z;
+        public Tomato(int x, int y, int z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
         }
 
-        return false;
+        @Override
+        public boolean equals(Object obj) {
+            if(obj instanceof Tomato) {
+                Tomato tomato = (Tomato) obj;
+                if(this.x != tomato.x) return false;
+                if(this.y != tomato.y) return false;
+                return this.z == tomato.z;
+            }
+
+            return false;
+        }
     }
+
 }
