@@ -25,7 +25,7 @@ public class BJ_1620 {
 		}
 		
 		Iterator<Entry<String, String>> iter = pokeMon.entrySet().iterator();
-		HashMap<String, String> pokeMon2 = new HashMap<String, String>();
+		HashMap<String, String> pokeMon2 = new HashMap<>();
 		
 		while(iter.hasNext()) {
 			Entry<String, String> entry = iter.next();
