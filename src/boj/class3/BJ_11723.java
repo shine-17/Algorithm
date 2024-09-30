@@ -2,17 +2,12 @@ package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 public class BJ_11723 {
     public static void main(String[] args) {
 
-        // 16:11 start
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Set<Integer> set = new HashSet<Integer>();
 
         /*
             비어있는 공집합 S
@@ -23,11 +18,46 @@ public class BJ_11723 {
             toggle x : S에 x가 있으면 제거, 없으면 x를 추가
             all : S를 {1,2,3...20} 으로 바꾼다
             empty : S를 공집합으로 바꾼다
+
+            AND 연산 (&) : 대응하는 두 비트가 모두 1일 때 1 반환
+            OR 연산 (|) : 대응하는 두 비트 중 하나라도 1이라면 1, 아니면 0 반환
+            XOR 연산 (^) : 대응하는 두 비트가 다르면 1, 같으면 0을 반환
+            NOT 연산 (~) : 비트의 값을 반전
+            Shift 연산 (<<, >>) : 왼쪽 또는 오른쪽으로 비트를 이동
          */
+
+//        int a = 0;
+//        a = (1 << 10) - 1;
+
+        // add 추가
+//        a |= (1 << 1);
+
+        // remove 삭제
+//        a &= ~(1 << 1);
+
+        // check 포함 여부 확인
+//        System.out.println((a & (1 << 9)) == (1 << 9));
+
+        // toggle 없으면 추가하고 있으면 삭제
+//        a ^= (1 << 9);
+
+        // all
+//        a = (1 << 21) - 1;
+
+//        1 0000 0000 0000 0000 0000
+//        1 1111 1111 1111 1111 1111
+
+        // empty
+//        a = 0;
+
 
         try {
             int m = Integer.parseInt(br.readLine());
             StringTokenizer st;
+            StringBuilder sb = new StringBuilder();
+
+            // 공집합 S
+            int set = 0;
 
             for(int i=0; i<m; i++) {
                 st = new StringTokenizer(br.readLine());
@@ -35,39 +65,36 @@ public class BJ_11723 {
 
                 if(op == null || op.isBlank()) continue;
 
-                Integer value = 0;
+                int value = 0;
                 if(!op.equals("all") && !op.equals("empty")) {
-                    value = Integer.valueOf(st.nextToken());
+                    value = Integer.parseInt(st.nextToken());
                 }
-
-
 
                 switch (op) {
                     case "add":
-                        set.add(value);
+                        set |= (1 << value);
                         break;
                     case "remove":
-                        set.remove(value);
+                        set &= ~(1 << value);
                         break;
                     case "check":
-                        if(set.contains(value)) System.out.println(1);
-                        else System.out.println(0);
+                        sb.append((set & (1 << value)) != 0 ? 1 : 0).append("\n");
                         break;
                     case "toggle":
-                        if(set.contains(value)) set.remove(value);
-                        else set.add(value);
+                        set ^= (1 << value);
                         break;
                     case "all":
-                        set.clear();
-                        for(int j=1; j<=20; j++) {
-                            set.add(j);
-                        }
+                        // 1~20 의 수를 표현해야 되기때문에 21자리로 시트프 후 -1을 해서 20자리를 맞춤
+                        set = (1 << 21) - 1;
                         break;
                     case "empty":
-                        set.clear();
+                        set = 0;
                         break;
                 }
             }
+
+            System.out.println(sb);
+
         } catch(Exception e) {}
     }
 }
