@@ -3,7 +3,6 @@ package boj.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class BJ_9375 {
@@ -17,40 +16,40 @@ public class BJ_9375 {
                 int n = Integer.parseInt(br.readLine());
                 Map<String, Integer> map = new HashMap<>();
 
-                for(int j=0; j<n; j++) {
+                for (int j = 0; j < n; j++) {
                     String costume = br.readLine().split(" ")[1];
                     map.put(costume, map.getOrDefault(costume, 0) + 1);
                 }
 
-                List<Integer> list = map.values().stream().sorted().toList();
-                System.out.println(list);
-
-                int sum = 0;
-                for(int j=list.size()-1; j>=0; j--) {
-                    int factorial = j != 0 ? j-1 : 0;
-                    int current = list.get(j);
-
-                    for(int k=0; k<factorial; k++) {
-                        sum += current * list.get(k);
-                    }
+                int result = 1;
+                for (int value : map.values()) {
+                    result *= (value + 1);
                 }
 
-
-
-//                if(map.size() > 1) {
-//                    Integer total = map.values().stream().reduce(1, (a, b) -> a * b);
-//                    n += total;
-//                }
-//
-//                System.out.println(n);
-//                System.out.println(map);
+                System.out.println(result - 1);
             }
 
+/*
+    [조합문제]
+    1. 안 입는 것까지 포함 (안 입는 것은 null로 표현)
+    2. 알몸이 아닌상태라고 했으니 전부 안 입는 것 제외 (연산 후 -1 해야함)
 
-            // n! / (r!( n-r)!)
-            // 8! /
+    headgear - hat, turban, null
+    eyewear - sunglasses, null
+    top - shirt, knit, null
+
+    조합 공식 : nCr = n! / r!(n-r)!
+    n은 종류, r은 선택개수
+
+    ex) headgear 중 1개만 선택해야하는 조합의 수는 3c1
+
+    3c1 = 3 * 2 / 2 * 1 = 3
+    2c1 = 2 / 1 = 2
+
+    = 3c1 * 2c1 - 1 = 5
 
 
-        } catch (Exception e) {}
+ */
+        } catch (Exception ignored) {}
     }
 }
