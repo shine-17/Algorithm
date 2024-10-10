@@ -2,8 +2,6 @@ package boj.class3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BJ_9461 {
     public static void main(String[] args) {
@@ -11,16 +9,30 @@ public class BJ_9461 {
 
         try {
             int t = Integer.parseInt(br.readLine());
-            int[] arr = {1, 1, 1, 2, 2, 3, 4, 5, 7, 9};
-            List<Integer> list = new ArrayList<Integer>(List.of(1, 1, 1, 2, 2, 3, 4, 5, 7, 9));
+            StringBuilder result = new StringBuilder();
 
             while (t-- > 0) {
                 int n = Integer.parseInt(br.readLine());
-
-
-
-
+                result.append(addRectangle(n)).append("\n");
             }
+
+            System.out.println(result);
+
         } catch(Exception ignored) {}
+    }
+
+    static long addRectangle(int n) {
+        if(n < 4) return 1;
+
+        long[] recArr = new long[n+1];
+        recArr[1] = 1;
+        recArr[2] = 1;
+        recArr[3] = 1;
+
+        for(int i=4; i<=n; i++) {
+            recArr[i] = recArr[i-2] + recArr[i-3];
+        }
+
+        return recArr[n];
     }
 }
