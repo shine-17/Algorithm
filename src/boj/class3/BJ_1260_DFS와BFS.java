@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BJ_1260 {
+public class BJ_1260_DFS와BFS {
 	static ArrayList<Integer>[] graph;
 	static boolean[] visited;
 	static ArrayList<Integer> DFS_Arr = new ArrayList<Integer>();

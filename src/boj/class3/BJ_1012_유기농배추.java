@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BJ_1012 {
+public class BJ_1012_유기농배추 {
 	static int[][] field;
 	static boolean[][] visit;
 	
