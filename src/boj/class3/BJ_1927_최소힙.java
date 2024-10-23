@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 
-public class BJ_1927 {
+public class BJ_1927_최소힙 {
 
 	public static void main(String[] args) {
 		try {
@@ -116,7 +116,7 @@ class Heap<E> {
 	/**
 	 * 상향 선별
 	 * 
-	 * @param inx 	 추가할 노드의 인덱스
+	 * @param idx 	 추가할 노드의 인덱스
 	 * @param target 재배치할 노드
 	 */
 	private void siftUp(int idx, E target) {

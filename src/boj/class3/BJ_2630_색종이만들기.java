@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BJ_2630 {
+public class BJ_2630_색종이만들기 {
 	
 	private static int[][] confetti;
 	
