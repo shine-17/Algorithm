@@ -14,6 +14,7 @@ public class BJ_18870_좌표압축 {
             int n = Integer.parseInt(br.readLine());
             String[] split = br.readLine().split(" ");
 
+            // 2 4 -10 4 -9
             Map<Integer, Integer> coordinateMap = new TreeMap<>();
             for(int i=0; i<split.length; i++) {
                 coordinateMap.put(i, Integer.parseInt(split[i]));
@@ -34,6 +35,8 @@ public class BJ_18870_좌표압축 {
                     num = coordinate;
                 }
             }
+
+            System.out.println(indexMap);
 
             Set<Integer> coordinateKeys = coordinateMap.keySet();
             for(Integer key : coordinateKeys) {

@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class BJ_1697 {
+public class BJ_1697_숨바꼭질 {
 	private static int n;
 	private static int k;
 	private static int time;

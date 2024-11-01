@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class BJ_1389 {
+public class BJ_1389_케빈베이컨의6단계법칙 {
 	static List<ArrayList<Integer>> friends = new ArrayList<ArrayList<Integer>>();
 	static List<Boolean> visited = new ArrayList<Boolean>();
 	static ArrayList<Integer> check = new ArrayList<Integer>();
