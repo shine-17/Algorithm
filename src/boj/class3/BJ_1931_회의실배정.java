@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
-public class BJ_1931 {
+public class BJ_1931_회의실배정 {
 
 	public static void main(String[] args) {
 		try {

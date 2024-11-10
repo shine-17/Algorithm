@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BJ_2178 {
+public class BJ_2178_미로탐색 {
 	
 	private static boolean[] visited;
 	

@@ -4,11 +4,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.StringTokenizer;
 
-public class BJ_2667 {
+public class BJ_2667_단지번호붙이기 {
 	
 	private static int n;
 	private static int[][] apartArr;
