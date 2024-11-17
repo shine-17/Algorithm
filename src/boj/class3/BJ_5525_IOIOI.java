@@ -3,7 +3,7 @@ package boj.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class BJ_5525 {
+public class BJ_5525_IOIOI {
     public static void main(String[] args) {
 
         try {

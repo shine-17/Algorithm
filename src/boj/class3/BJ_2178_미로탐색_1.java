@@ -56,8 +56,6 @@ public class BJ_2178_미로탐색_1 {
         while(!queue.isEmpty()) {
             Block sideBlock = queue.poll();
 
-//            System.out.println("sideBlock : " + sideBlock.x + ", " + sideBlock.y + " - [" + distance[sideBlock.x][sideBlock.y] + "]");
-
             for(int i=0; i<mx.length; i++) {
                 int nx = sideBlock.x + mx[i];
                 int ny = sideBlock.y + my[i];

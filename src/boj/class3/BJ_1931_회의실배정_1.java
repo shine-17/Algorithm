@@ -14,6 +14,7 @@ public class BJ_1931_회의실배정_1 {
             StringTokenizer st = null;
 
             int[][] rooms = new int[n][2];
+
             for(int i=0; i<n; i++) {
                 st = new StringTokenizer(br.readLine());
 
