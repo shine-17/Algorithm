@@ -3,7 +3,7 @@ package boj.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class BJ_6064 {
+public class BJ_6064_카잉달력 {
     public static void main(String[] args) {
 
         try {
