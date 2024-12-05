@@ -6,7 +6,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class BJ_7569 {
+public class BJ_7569_토마토 {
 
     static int[][][] tomatos;
     static Deque<Tomato> ripenTomatos = new LinkedList<>(); //익은 토마토 좌표
@@ -73,9 +73,7 @@ public class BJ_7569 {
 
             System.out.println(day);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {}
 
     }
 
