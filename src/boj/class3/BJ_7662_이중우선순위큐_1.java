@@ -30,17 +30,12 @@ public class BJ_7662_이중우선순위큐_1 {
                     }
                     // 삭제
                     else {
-                        int key = 0;
-
                         if(pq.isEmpty()) continue;
 
-                        if(num == 1) key = pq.pollLastEntry().getKey();
-                        else if(num == -1) key = pq.pollFirstEntry().getKey();
-
-                        if(!pq.containsKey(key)) continue;
+                        int key = num == 1 ? pq.lastEntry().getKey() : pq.firstEntry().getKey();
 
                         if(pq.get(key) == 1) pq.remove(key);
-                        else pq.put(pq.get(key), pq.get(key) - 1);
+                        else pq.put(key, pq.get(key) - 1);
                     }
                 }
 
@@ -54,8 +49,6 @@ public class BJ_7662_이중우선순위큐_1 {
 
             System.out.println(sb);
 
-        } catch (Exception ignored) {
-            ignored.printStackTrace();
-        }
+        } catch (Exception ignored) {}
     }
 }

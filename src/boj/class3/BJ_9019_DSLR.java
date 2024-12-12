@@ -17,7 +17,7 @@ import java.util.*;
     R: n의 각 자릿수를 오른편으로 1번씩 회전 d1,d2,d3,d4 -> d4,d1,d2,d3
  */
 
-public class BJ_9019 {
+public class BJ_9019_DSLR {
 
     static boolean[] visited = new boolean[10000];
     static String[] cmdArr = new String[10000];
