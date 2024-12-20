@@ -68,12 +68,10 @@ public class BJ_10026_적록색약 {
                 int ny = node.y + my[i];
 
                 try {
-
                     if(colorList.contains(rgb[nx][ny]) && !visited[nx][ny]) {
                         visited[nx][ny] = true;
                         queue.add(new Color(nx, ny));
                     }
-
                 } catch (Exception ignored) {}
             }
         }

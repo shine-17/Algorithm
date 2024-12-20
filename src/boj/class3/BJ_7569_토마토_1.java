@@ -9,12 +9,12 @@ import java.util.StringTokenizer;
 public class BJ_7569_토마토_1 {
     static int[][][] tomatos;
     static boolean[][][] visited;
-    static int unripenTomatos;
-    static Queue<Tomato> ripenTomatos = new LinkedList<>();
+    static int unripenTomatos; // 안 익은 토마토
+    static Queue<Tomato> ripenTomatos = new LinkedList<>(); // 익은 토마토
 
-    static int mx[] = {-1, 0, 1, 0, 0, 0};
-    static int my[] = {0, 1, 0, -1, 0, 0};
-    static int mz[] = {0, 0, 0, 0, -1, 1};
+    static int[] mx = {-1, 0, 1, 0, 0, 0};
+    static int[] my = {0, 1, 0, -1, 0, 0};
+    static int[] mz = {0, 0, 0, 0, -1, 1};
 
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
