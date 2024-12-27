@@ -30,23 +30,24 @@ public class BJ_15649_N과M_1 {
         } catch (Exception ignored) {}
     }
 
+    // 백트래킹 (재귀)
     static void numberSequence(int n, int m, int depth) {
 
         if (depth == m) {
             Arrays.stream(arr).forEach(i -> result.append(i).append(" "));
             result.append('\n');
-//            arr = new int[m];
             return;
         }
 
         for (int i=0; i<n; i++) {
             if (!visited[i]) {
+
+                // 실제 백트래킹 로직
                 visited[i] = true;
                 arr[depth] = i + 1;
-
                 numberSequence(n, m, depth + 1);
-
                 visited[i] = false;
+
             }
         }
 
