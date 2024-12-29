@@ -60,7 +60,6 @@ public class BJ_9019_DSLR_1 {
             if(cmd[l] == null) {
                 cmd[l] = cmd[num] + "L";
                 queue.add(l);
-//                System.out.println("cmd[" + l + "] : " + cmd[l]);
             }
 
             int r = commandR(num);

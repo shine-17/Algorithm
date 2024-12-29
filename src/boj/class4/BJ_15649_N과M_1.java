@@ -41,13 +41,23 @@ public class BJ_15649_N과M_1 {
 
         for (int i=0; i<n; i++) {
             if (!visited[i]) {
-
-                // 실제 백트래킹 로직
                 visited[i] = true;
                 arr[depth] = i + 1;
                 numberSequence(n, m, depth + 1);
                 visited[i] = false;
 
+                /*
+                    1234
+                    1243
+                    1324
+                    ...
+
+                    visited[i]를 true로 만든 후 false로 다시 만드는 이유
+
+                    중복제거를 위해 자기 자신만 visited[i] = true로 설정한 후 백트래킹을 진행하며
+                    백트래킹 종료 후에는 false로 설정하여 다른 백트래킹 로직에 포함될 수 있게함.
+
+                 */
             }
         }
 
