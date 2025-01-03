@@ -47,9 +47,7 @@ public class BJ_14500_테트로미노_1 {
 
             System.out.println(max);
 
-        } catch (Exception ignored) {
-            ignored.printStackTrace();
-        }
+        } catch (Exception ignored) {}
     }
 
     // 0: 6, 1: 5, 2: 4,
@@ -62,6 +60,7 @@ public class BJ_14500_테트로미노_1 {
             // ㅡ ㄱ
             arr[depth-1].isBack = true;
             tetromino(arr[depth - 1].x, arr[depth - 1].y, depth);
+            arr[depth-1].isBack = false;
         }
         else if (depth == 3) {
             final int[] sum = new int[1];
