@@ -2,14 +2,11 @@ package boj.class4;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BJ_1149_RGB거리_1 {
-    static final char R = 'r';
-    static final char G = 'g';
-    static final char B = 'b';
-    static char[] rgbs = new char[] {R, G, B};
-    static Home[] homes;
+    static int[][] homes;
 
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,7 +15,7 @@ public class BJ_1149_RGB거리_1 {
         try {
 
             int n = Integer.parseInt(br.readLine());
-            homes = new Home[n];
+            homes = new int[n][3];
 
             for (int i=0; i<n; i++) {
                 st = new StringTokenizer(br.readLine());
@@ -27,53 +24,45 @@ public class BJ_1149_RGB거리_1 {
                 int g = Integer.parseInt(st.nextToken());
                 int b = Integer.parseInt(st.nextToken());
 
-                homes[i] = new Home(r, g, b);
+                homes[i][0] = r;
+                homes[i][1] = g;
+                homes[i][2] = b;
             }
 
+            int[][] dp = new int[n][3];
 
-            int[] dp = new int[n];
-            int min = 0;
+            for (int i=0; i<3; i++) {
+                dp[0][i] = homes[0][i];
 
-            for (char color : rgbs) {
-                homes[0].color = color;
-                int sum = 0;
-                if (color == 'r') sum = homes[0].RED;
-                else if (color == 'g') sum = homes[0].GREEN;
-                else if (color == 'b') sum = homes[0].BLUE;
+                int index = i;
 
-                for (int i=1; i<n; i++) {
-                    char prevColor = homes[i-1].color;
-
-                    for (int j=i; j>=0; j--) {
-                        if (prevColor == homes[j].color) continue;
-
-                        if (prevColor == R) {
-                            if (homes[j].GREEN < homes[j].BLUE) {
-
-                            }
-                            Math.min(homes[j].GREEN, homes[j].BLUE);
+                for (int j=1; j<homes.length; j++) {
+                    switch (index) {
+                        case 0 -> {
+                            dp[j][i] = dp[j-1][i] + Math.min(homes[j][1], homes[j][2]);
+                            index = homes[j][1] < homes[j][2] ? 1 : 2;
+                        }
+                        case 1 -> {
+                            dp[j][i] = dp[j-1][i] + Math.min(homes[j][0], homes[j][2]);
+                            index = homes[j][0] < homes[j][2] ? 0 : 2;
+                        }
+                        case 2 -> {
+                            dp[j][i] = dp[j-1][i] + Math.min(homes[j][0], homes[j][1]);
+                            index = homes[j][0] < homes[j][1] ? 0 : 1;
                         }
                     }
-
-                    min = Math.min(min, dp[i]);
                 }
             }
 
+            for (int i=0; i<dp.length; i++) {
+                for (int j=0; j<dp[0].length; j++) {
+                    System.out.print(dp[i][j] + " ");
+                }
+                System.out.println();
+            }
 
-
-        } catch (Exception ignored) {}
-    }
-
-    static class Home {
-        char color;
-        int RED;
-        int GREEN;
-        int BLUE;
-
-        public Home(int RED, int GREEN, int BLUE) {
-            this.RED = RED;
-            this.GREEN = GREEN;
-            this.BLUE = BLUE;
+        } catch (Exception ignored) {
+            ignored.printStackTrace();
         }
     }
 }

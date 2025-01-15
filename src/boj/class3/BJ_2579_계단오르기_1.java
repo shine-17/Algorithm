@@ -3,7 +3,7 @@ package boj.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class BJ_2579_1 {
+public class BJ_2579_계단오르기_1 {
     static int[] scores;
     static Integer[] dp;
 

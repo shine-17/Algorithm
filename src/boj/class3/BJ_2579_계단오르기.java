@@ -3,7 +3,7 @@ package boj.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class BJ_2579 {
+public class BJ_2579_계단오르기 {
 	private static int[] stairs;
 	
 	private static Integer[] dp;
