@@ -4,13 +4,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// 실패 : 시간초과
 public class BJ_1149_RGB거리 {
-    static final char R = 'r';
-    static final char G = 'g';
-    static final char B = 'b';
-    static char[] rgbs = new char[] {R, G, B};
-    static Home[] homes;
+    static int[][] homes;
+    static int[][] dp;
+    static final int RED = 0;
+    static final int GREEN = 1;
+    static final int BLUE = 2;
+    static final int[] rgbs = {RED, GREEN, BLUE};
 
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,7 +19,8 @@ public class BJ_1149_RGB거리 {
         try {
 
             int n = Integer.parseInt(br.readLine());
-            homes = new Home[n];
+            homes = new int[n][3];
+            dp = new int[n][3];
 
             for (int i=0; i<n; i++) {
                 st = new StringTokenizer(br.readLine());
@@ -28,45 +29,37 @@ public class BJ_1149_RGB거리 {
                 int g = Integer.parseInt(st.nextToken());
                 int b = Integer.parseInt(st.nextToken());
 
-                homes[i] = new Home(r, g, b);
+                homes[i] = new int[] {r, g, b};
             }
+
+            dp[0][0] = homes[0][0];
+            dp[0][1] = homes[0][1];
+            dp[0][2] = homes[0][2];
 
             int min = Integer.MAX_VALUE;
-
-            for (char color : rgbs) {
-                min = Math.min(findRGB(0, 0, color), min);
+            for (int color : rgbs) {
+                min = Math.min(min, findRGB(n - 1, color));
             }
-
             System.out.println(min);
 
         } catch (Exception ignored) {}
     }
 
-    static int findRGB(int sum, int index, char color) {
-        if (index == homes.length) return sum;
+    static int findRGB(int n, int color) {
 
-        if (color == R) {
-            return Math.min(findRGB(sum + homes[index].GREEN, index + 1, G), findRGB(sum + homes[index].BLUE, index + 1, B));
-        }
-        else if (color == G) {
-            return Math.min(findRGB(sum + homes[index].RED, index + 1, R), findRGB(sum + homes[index].BLUE, index + 1, B));
-        }
-        else if (color == B) {
-            return Math.min(findRGB(sum + homes[index].RED, index + 1, R), findRGB(sum + homes[index] .GREEN,index + 1, G));
+        if (dp[n][color] == 0) {
+            if (color == RED) {
+                dp[n][color] = Math.min(findRGB(n-1, GREEN), findRGB(n-1, BLUE)) + homes[n][color];
+            }
+            else if (color == GREEN) {
+                dp[n][color] = Math.min(findRGB(n-1, RED), findRGB(n-1, BLUE)) + homes[n][color];
+            }
+            else if (color == BLUE) {
+                dp[n][color] = Math.min(findRGB(n-1, RED), findRGB(n-1, GREEN)) + homes[n][color];
+            }
         }
 
-        return 0;
+        return dp[n][color];
     }
 
-    static class Home {
-        int RED;
-        int GREEN;
-        int BLUE;
-
-        public Home(int RED, int GREEN, int BLUE) {
-            this.RED = RED;
-            this.GREEN = GREEN;
-            this.BLUE = BLUE;
-        }
-    }
 }
