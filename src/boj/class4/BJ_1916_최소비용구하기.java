@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class BJ_1916_최소비용구하기 {
+    static final int MAX = 100001;
+    static ArrayList<Bus>[] busList;
+
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
@@ -13,7 +16,11 @@ public class BJ_1916_최소비용구하기 {
 
             int n = Integer.parseInt(br.readLine());
             int m = Integer.parseInt(br.readLine());
-            LinkedList<Bus> buses = new LinkedList<>();
+            busList = new ArrayList[n+1];
+
+            for (int i=1; i<=n; i++) {
+                busList[i] = new ArrayList<>();
+            }
 
             for (int i=0; i<m; i++) {
                 st = new StringTokenizer(br.readLine());
@@ -21,55 +28,64 @@ public class BJ_1916_최소비용구하기 {
                 int end = Integer.parseInt(st.nextToken());
                 int cost = Integer.parseInt(st.nextToken());
 
-                buses.add(new Bus(start, end, cost));
+                Bus bus = new Bus(start, end, cost);
+
+                busList[start].add(bus);
             }
 
             st = new StringTokenizer(br.readLine());
             int startCity = Integer.parseInt(st.nextToken());
             int endCity = Integer.parseInt(st.nextToken());
 
-            int minimumCost = findMinimumCost(n, buses, startCity, endCity);
+            int minimumCost = findMinimumCost(n, startCity, endCity);
 
             System.out.println(minimumCost);
+
+            Runtime.getRuntime().gc();
+            long usedMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+            System.out.print(usedMemory + " bytes");
 
         } catch (Exception ignored) {}
     }
 
-    static int findMinimumCost(int n, Queue<Bus> queue, int start, int end) {
+    static int findMinimumCost(int n, int start, int end) {
         int[][] dist = new int[n+1][n+1];
-        Arrays.fill(dist, Integer.MAX_VALUE);
+
+        for (int i=1; i<dist.length; i++) {
+            Arrays.fill(dist[i], MAX);
+        }
+
+        Queue<Bus> queue = new LinkedList<>(busList[start]);
 
         while (!queue.isEmpty()) {
             Bus bus = queue.poll();
 
-            dist[bus.start][bus.end] = Math.min(dist[bus.start][bus.end], bus.cost);
+            if (dist[bus.start][bus.end] == MAX) dist[bus.start][bus.end] = Math.min(dist[bus.start][bus.end], bus.cost);
 
-            // 4,5 -> 4,1
-            // 1,2 / 1,3 / 1,4 / 1,5 -> 2,3,4,5 -> 2,4 / 3,4 / 4,5
+            for (Bus newBus : busList[bus.end]) {
+                dist[newBus.start][newBus.end] = Math.min(dist[newBus.start][newBus.end], bus.cost + newBus.cost);
+                queue.add(newBus);
+            }
         }
 
-        return dist[start][end];
+        int min = MAX;
+        for (int i=1; i<dist.length; i++) {
+            min = Math.min(dist[i][end], min);
+        }
+
+        return min;
     }
 
 
     static class Bus {
-        int start;
-        int end;
+        Integer start;
+        Integer end;
         int cost;
 
-        public Bus(int start, int end, int cost) {
+        public Bus(Integer start, Integer end, int cost) {
             this.start = start;
             this.end = end;
             this.cost = cost;
-        }
-
-        @Override
-        public String toString() {
-            return "Bus{" +
-                    "start=" + start +
-                    ", end=" + end +
-                    ", cost=" + cost +
-                    '}';
         }
     }
 }
