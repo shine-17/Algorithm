@@ -44,14 +44,6 @@ public class BJ_2096_내려가기_1 {
             }
         }
 
-//            int max = Arrays.stream(max_dp).max().getAsInt();
-//            int min = Arrays.stream(min_dp).min().getAsInt();
-
-        // 4,194,304 byte = 4MB
-//            Runtime.getRuntime().gc();
-//            long usedMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-//            System.out.print(usedMemory + " bytes");
-
         bw.write(Math.max(Math.max(max_dp[0], max_dp[1]), max_dp[2]) + " ");
         bw.write(Math.min(Math.max(min_dp[0], min_dp[1]), min_dp[2]) + "\n");
         bw.newLine();
