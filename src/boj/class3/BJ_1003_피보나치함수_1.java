@@ -3,7 +3,7 @@ package boj.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class BJ_1003_1 {
+public class BJ_1003_피보나치함수_1 {
     static int[] fib;
 
     public static void main(String[] args) {

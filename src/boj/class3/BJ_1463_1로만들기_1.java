@@ -3,7 +3,7 @@ package boj.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class BJ_1463_1 {
+public class BJ_1463_1로만들기_1 {
     static Integer[] numArr;
 
     public static void main(String[] args) {
