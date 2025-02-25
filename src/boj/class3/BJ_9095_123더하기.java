@@ -3,7 +3,7 @@ package boj.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class BJ_9095_1 {
+public class BJ_9095_123더하기 {
     static int[] sumArr = new int[11];
 
     public static void main(String[] args) {
@@ -60,6 +60,22 @@ public class BJ_9095_1 {
         1+3
         ------> n=1일 때와 개수동일
         --------------------------------
+
+        --------------------------------
+        n=5
+        1+1+1+1+1
+        2+1+1+1
+        1+2+1+1
+        1+1+2+1
+        1+1+1+2
+        2+2+1
+        2+1+2
+        1+2+2
+        3+1+1
+        1+3+1
+        1+1+3
+        3+2
+        2+3
 
         점화식
         f(n) = f(n-1) + f(n-2) + f(n-3)
