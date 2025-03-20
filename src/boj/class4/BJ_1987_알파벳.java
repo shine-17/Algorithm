@@ -29,6 +29,7 @@ public class BJ_1987_알파벳 {
             // dfs, backTracking
             Set<Character> visited = new HashSet<>();
             visited.add(alphabets[0][0]);
+
             dfs(0, 0, visited);
 
             System.out.println(max);
