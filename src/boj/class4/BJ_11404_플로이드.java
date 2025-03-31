@@ -77,6 +77,7 @@ public class BJ_11404_플로이드 {
         }
 
         // costSum 초기화
+        // 시간초과 : 초기화 부분빼고 다른 구조로 생각해야할듯
         for (Integer key : routeMap.keySet()) {
             for (Route route : routeMap.get(key)) {
                 route.costSum = route.cost;
