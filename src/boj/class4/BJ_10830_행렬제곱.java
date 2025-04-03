@@ -63,6 +63,8 @@ public class BJ_10830_행렬제곱 {
         long[][] tempArr = divide(arr, b / 2);
 
         if (b % 2 == 1) {
+            // (powNum * powNum % c) * a % c;
+            // A * a % c;
             return divideMatrix(
                     matrixMultiple(
                             divideMatrix(matrixMultiple(tempArr, tempArr)), arr
