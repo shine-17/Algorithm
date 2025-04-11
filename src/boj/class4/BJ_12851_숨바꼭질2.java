@@ -36,6 +36,7 @@ public class BJ_12851_숨바꼭질2 {
             int n = Integer.parseInt(st.nextToken());
             int k = Integer.parseInt(st.nextToken());
 
+            // n이 k보다 크다면 빼는 방법밖에 없음
             if (n >= k) {
                 System.out.println(n-k);
                 System.out.println(1);
@@ -67,13 +68,17 @@ public class BJ_12851_숨바꼭질2 {
                 if (i < 2) next = num + mx[i];
                 else next = num * mx[i];
 
+                // 범위 초과
                 if (next < 0 || next > INF-1) continue;
 
+                // 원하는 위치에 도착했을 때 카운팅
                 if (next == k) {
                     min = points[num];
                     count++;
                 }
 
+                // 다음 위치가 0 : 방문하지 않은 위치이므로 최소 시간이 될 가능성 있음
+                // 다음 위치의 카운팅과 현재 카운팅 +1 이 같으면, 최소 시간이 될 가능성 있음
                 if (points[next] == 0 || points[next] == points[num]+1) {
                     queue.add(next);
                     points[next] = points[num]+1;
