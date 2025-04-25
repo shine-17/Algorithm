@@ -40,9 +40,7 @@ public class BJ_17144_미세먼지안녕_1 {
 
             for (int i=0; i<t; i++) {
                 spreadFineDust(r, c);
-//                print(r, c);
                 airPurifier(r, c);
-//                print(r, c);
             }
 
             int sum = 0;
@@ -56,16 +54,6 @@ public class BJ_17144_미세먼지안녕_1 {
             System.out.println(sum + 2);
 
         } catch (Exception ignored) {}
-    }
-
-    static void print(int r, int c) {
-        for (int i=0; i<r; i++) {
-            for (int j=0; j<c; j++) {
-                System.out.print(homes[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println("---------------------------------");
     }
 
     static void spreadFineDust(int r, int c) {
