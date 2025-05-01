@@ -2,10 +2,7 @@ package boj.class4;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BJ_14938_서강그라운드 {
     static int[] grounds;
@@ -52,65 +49,46 @@ public class BJ_14938_서강그라운드 {
                 bfs(i);
             }
 
+//            bfs(1);
+
             System.out.println(max);
 
         } catch (Exception ignored) {}
     }
 
     static void bfs(int start) {
-        Queue<Route> queue = new ArrayDeque<>(routes[start]);
+        PriorityQueue<Route> queue = new PriorityQueue<>(routes[start]);
         int sum = grounds[start];
         int[][] distance = new int[n+1][2];
-
-        boolean[] visited = new boolean[n+1];
-        visited[start] = true;
 
         while (!queue.isEmpty()) {
             Route route = queue.poll();
 
-            if (!visited[route.end]) {
-                visited[route.end] = true;
+            // start, end
+            long dist = distance[route.start][0] + route.length;
 
+            if (dist <= m && distance[route.start][1] + grounds[route.end] >= distance[route.end][1]) {
                 distance[route.end][0] = distance[route.start][0] + route.length;
+                distance[route.end][1] = distance[route.start][1] + grounds[route.end];
+                sum += grounds[route.end];
 
-                // start, end
-                if (distance[route.end][0] <= m) {
-                    distance[route.end][1] += grounds[route.end];
-                    System.out.println("start: " + route.start + " end: " + route.end + ", value: " + grounds[route.end]);
-
-                    if (!routes[route.end].isEmpty()) {
-                        queue.addAll(routes[route.end]);
-                    }
-//                    else {
-//                        sum += distance[route.start][1];
-//                    }
-                }
-                else {
-//                    System.out.println("start: " + route.start + " end: " + route.end + ", value: " + distance[route.start][1]);
-                    sum += distance[route.start][1];
-                }
+//                System.out.println("start: " + route.start + " end: " + route.end + ", value: " + grounds[route.end] + ", length: " + distance[route.end][0]);
+                queue.addAll(routes[route.end]);
             }
-
-//            for (Route newRoute : routes[route.end]) {
-//                if (visited[newRoute.end]) continue;
-//
-//                visited[newRoute.end] = true;
-//
-//                if (distance[route.end][0] + route.length <= m) {
-//                    distance[route.end][0] += route.length;
-//                    distance[route.end][1] += grounds[route.end];
-//                }
-//                else {
-//                    sum += distance[route.end][1];
-//                }
-//            }
         }
+
+//        for (int i=0; i<distance.length; i++) {
+//            int[] arr = distance[i];
+//            sum += arr[1];
+//
+////            System.out.println("i: " + i + ", arr[1]: " + arr[1]);
+//        }
 
 //        System.out.println("start: " + start + ", sum: " + sum);
         max = Math.max(max, sum);
     }
 
-    static class Route {
+    static class Route implements Comparable<Route> {
         int start;
         int end;
         int length;
@@ -119,6 +97,22 @@ public class BJ_14938_서강그라운드 {
             this.start = start;
             this.end = end;
             this.length = length;
+        }
+
+        @Override
+        public String toString() {
+            return "Route{" +
+                    "start=" + start +
+                    ", end=" + end +
+                    ", length=" + length +
+                    '}';
+        }
+
+        @Override
+        public int compareTo(Route o) {
+            if (this.length == o.length) return -1;
+
+            return this.length - o.length;
         }
     }
 }
