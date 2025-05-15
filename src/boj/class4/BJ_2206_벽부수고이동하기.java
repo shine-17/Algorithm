@@ -10,8 +10,7 @@ public class BJ_2206_벽부수고이동하기 {
     static int[] mx = {-1, 0, 1, 0};
     static int[] my = {0, -1, 0, 1};
 
-    static final int START = 1, END = 1, INF = 1000001;
-    static int min = Integer.MAX_VALUE;
+    static final int START = 0, END = 0, INF = 1000001;
 
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,83 +21,81 @@ public class BJ_2206_벽부수고이동하기 {
             int n = Integer.parseInt(st.nextToken());
             int m = Integer.parseInt(st.nextToken());
 
-            map = new int[n+1][m+1];
-
-            for (int i=1; i<=n; i++) {
-//                map[i] = Arrays.stream(br.readLine().split("")).mapToInt(Integer::parseInt).toArray();
-                String[] split = br.readLine().split("");
-
-                for (int j=1; j<=m; j++) {
-                    int value = Integer.parseInt(split[j-1]);
-                    map[i][j] = value;
-
-                    if (value == 1) walls.add(new Point(i, j));
-                }
+            if (n-1 == START && m-1 == END) {
+                System.out.println(1);
+                return;
             }
 
-            TreeSet<Integer> set = new TreeSet<>();
-//            set.add(move(n, m));
+            map = new int[n][m];
+
+            for (int i=0; i<n; i++) {
+                String[] split = br.readLine().split("");
+
+                for (int j=0; j<m; j++) {
+                    int value = Integer.parseInt(split[j]);
+                    map[i][j] = value;
+                }
+            }
 
             // 1번만 수행해서 찾아야 함
             // 맵을 [2][N][M] 크기로 지정하셔서 벽을 부수지 않은 경우를 [0][N][M], 벽을 부순 경우를 [1][N][M]로 표현하면
             // 2*N*M 크기의 맵에 bfs를 한 번만 돌려서 문제를 푸실 수 있습니다
 
-            move(n, m);
-
-//            for (Point point : walls) {
-//                map[point.x][point.y] = 0;
-////                set.add(move(n, m));
-//                move(n, m);
-//                map[point.x][point.y] = 1;
-//            }
-
-//            System.out.println(set.higher(0) == null ? -1 : set.higher(0));
-            System.out.println(min == INF ? -1 : min);
-
+            System.out.println(move(n, m));
 
         } catch (Exception ignored) {}
     }
 
-    static void move(int n, int m) {
-        boolean[][] visited = new boolean[n+1][m+1];
-        int[][] dist = new int[n+1][m+1];
-
-        dist[START][END] = 1;
+    static int move(int n, int m) {
+        boolean[][][] visited = new boolean[2][n][m];
+        int[][] dist = new int[n][m];
 
         Queue<Point> queue = new ArrayDeque<>();
-        queue.add(new Point(START, END));
+        queue.add(new Point(0, START, END));
 
         while (!queue.isEmpty()) {
             Point point = queue.poll();
 
-            if (dist[n][m] != 0 || dist[n][m] > min) break;
+            for (int i=0; i<mx.length; i++) {
+                int nw = point.w; // 벽 부쉈는지 여부
+                int nx = point.x + mx[i];
+                int ny = point.y + my[i];
 
-            if (!visited[point.x][point.y]) {
-                visited[point.x][point.y] = true;
+                if (nx >= 0 && ny >= 0 && nx < n && ny < m) {
 
-//                System.out.println("x: " + point.x + ", y: " + point.y + ", dist: " + dist[point.x][point.y]);
+                    if (map[nx][ny] == 1) {
+                        if (nw == 0 && !visited[1][nx][ny]) {
+                            visited[nw][nx][ny] = true;
+                            dist[nx][ny] = dist[point.x][point.y] + 1;
+                            queue.add(new Point(1, nx, ny));
+                        }
+                    }
+                    else {
+                        if (!visited[nw][nx][ny]) {
+                            visited[nw][nx][ny] = true;
+                            dist[nx][ny] = dist[point.x][point.y] + 1;
+                            queue.add(new Point(nw, nx, ny));
+                        }
 
-                for (int i=0; i<mx.length; i++) {
-                    int nx = point.x + mx[i];
-                    int ny = point.y + my[i];
+                    }
 
-                    if (nx > 0 && ny > 0 && nx <= n && ny <= m && map[nx][ny] == 0) {
-                        dist[nx][ny] = dist[point.x][point.y] + 1;
-                        queue.add(new Point(nx, ny));
+                    if (nx == n-1 && ny == m-1) {
+                        return dist[nx][ny] + 1;
                     }
                 }
             }
         }
 
-        min = Math.min(min, dist[n][m] == 0 ? INF : dist[n][m]);
-//        return dist[n][m];
+        return -1;
     }
 
     static class Point {
+        int w;
         int x;
         int y;
 
-        public Point(int x, int y) {
+        public Point(int w, int x, int y) {
+            this.w = w;
             this.x = x;
             this.y = y;
         }
