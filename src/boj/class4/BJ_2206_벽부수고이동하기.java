@@ -6,7 +6,6 @@ import java.util.*;
 
 public class BJ_2206_벽부수고이동하기 {
     static int[][] map;
-    static List<Point> walls = new ArrayList<>();
     static int[] mx = {-1, 0, 1, 0};
     static int[] my = {0, -1, 0, 1};
 
@@ -63,14 +62,18 @@ public class BJ_2206_벽부수고이동하기 {
 
                 if (nx >= 0 && ny >= 0 && nx < n && ny < m) {
 
+                    // 벽일 때
                     if (map[nx][ny] == 1) {
+                        // 벽을 부신 적이 없고, 방문하지 않았을 때
                         if (nw == 0 && !visited[1][nx][ny]) {
                             visited[nw][nx][ny] = true;
                             dist[nx][ny] = dist[point.x][point.y] + 1;
                             queue.add(new Point(1, nx, ny));
                         }
                     }
+                    // 벽이 아닐 때
                     else {
+                        // 방문하지 않았을 때
                         if (!visited[nw][nx][ny]) {
                             visited[nw][nx][ny] = true;
                             dist[nx][ny] = dist[point.x][point.y] + 1;
@@ -90,7 +93,7 @@ public class BJ_2206_벽부수고이동하기 {
     }
 
     static class Point {
-        int w;
+        int w; // 벽 부쉈는지 여부
         int x;
         int y;
 
