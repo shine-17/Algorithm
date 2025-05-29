@@ -2,9 +2,7 @@ package boj.class4;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BJ_13549_숨바꼭질3 {
     public static void main(String[] args) {
@@ -29,6 +27,13 @@ public class BJ_13549_숨바꼭질3 {
 
         Queue<Integer> queue = new LinkedList<>();
         queue.add(n);
+
+        PriorityQueue<Object> pq = new PriorityQueue<>(new Comparator<>() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return o1.toString().compareTo(o2.toString());
+            }
+        });
 
         while (!queue.isEmpty()) {
             Integer current = queue.poll();
