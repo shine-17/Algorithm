@@ -29,6 +29,7 @@ public class BJ_11660_구간합구하기5_1 {
 
             cumulativeSum(arr);
 
+            StringBuilder result = new StringBuilder();
             for (int i=0; i<m; i++) {
                 st = new StringTokenizer(br.readLine());
 
@@ -37,15 +38,11 @@ public class BJ_11660_구간합구하기5_1 {
                 int x2 = Integer.parseInt(st.nextToken());
                 int y2 = Integer.parseInt(st.nextToken());
 
-
+                int sum = arr[x2][y2] - arr[x2][y1-1] - arr[x1-1][y2] + arr[x1-1][y1-1];
+                result.append(sum).append("\n");
             }
 
-            for (int i=0; i<arr.length; i++) {
-                for (int j=0; j<arr[i].length; j++) {
-                    System.out.print(arr[i][j] + " ");
-                }
-                System.out.println();
-            }
+            System.out.println(result);
 
         } catch (Exception ignored) {}
     }
@@ -53,7 +50,7 @@ public class BJ_11660_구간합구하기5_1 {
     static void cumulativeSum(int[][] arr) {
         for (int i=1; i<arr.length; i++) {
             for (int j=1; j<arr[i].length; j++) {
-                arr[i][j] += arr[i-1][j] + arr[i][j-1];
+                arr[i][j] = arr[i][j] + arr[i-1][j] + arr[i][j-1] - arr[i-1][j-1];
             }
         }
     }
