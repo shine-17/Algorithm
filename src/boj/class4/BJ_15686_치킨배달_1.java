@@ -6,6 +6,7 @@ import java.util.*;
 
 public class BJ_15686_치킨배달_1 {
     static int[][] city;
+    static int m;
     static List<Place> homes = new ArrayList<>();
     static List<Place> chickens = new ArrayList<>();
     static List<Place> openChickens = new ArrayList<>();
@@ -20,7 +21,7 @@ public class BJ_15686_치킨배달_1 {
 
             StringTokenizer st = new StringTokenizer(br.readLine());
             int n = Integer.parseInt(st.nextToken());
-            int m = Integer.parseInt(st.nextToken());
+            m = Integer.parseInt(st.nextToken());
 
             city = new int[n][n];
 
@@ -39,15 +40,15 @@ public class BJ_15686_치킨배달_1 {
             visited = new boolean[chickens.size()];
 
             if (chickens.size() == m) min = getChickenDistanceSum(chickens);
-            else backTracking(0, m);
+            else backTracking(0, 0);
 
             System.out.println(min);
 
         } catch (Exception ignored) {}
     }
 
-    static void backTracking(int at, int m) {
-        if (openChickens.size() == m) {
+    static void backTracking(int at, int depth) {
+        if (depth == m) {
             min = Math.min(min, getChickenDistanceSum(openChickens));
             return;
         }
@@ -57,7 +58,7 @@ public class BJ_15686_치킨배달_1 {
         for (int i=at; i<chickens.size(); i++) {
             visited[i] = true;
             openChickens.add(chickens.get(i));
-            backTracking(at+1, m);
+            backTracking(i+1, depth+1);
             openChickens.remove(openChickens.size()-1);
             visited[i] = false;
         }
@@ -72,12 +73,9 @@ public class BJ_15686_치킨배달_1 {
             for (Place chicken : chickens) {
                 distance = Math.min(distance, betweenDistance(home, chicken));
             }
-//            System.out.println("home[" + home.x + ", " + home.y + "] : " + distance);
 
             sum += distance;
         }
-
-//        System.out.println("sum : " + sum);
 
         return sum;
     }
