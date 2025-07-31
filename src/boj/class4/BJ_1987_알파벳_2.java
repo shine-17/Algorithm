@@ -2,16 +2,18 @@ package boj.class4;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayDeque;
 import java.util.HashSet;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
-// bfs 실패 : 메모리초과
 public class BJ_1987_알파벳_2 {
+    static int r, c;
     static char[][] alphabets;
     static int[] mx = {-1, 0, 1, 0};
     static int[] my = {0, -1, 0, 1};
+
+        static HashSet<Character> set = new HashSet<>();
+//    static LinkedHashSet<Character> set = new LinkedHashSet<>();
+    static int max = Integer.MIN_VALUE;
 
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,8 +21,8 @@ public class BJ_1987_알파벳_2 {
         try {
 
             StringTokenizer st = new StringTokenizer(br.readLine());
-            int r = Integer.parseInt(st.nextToken());
-            int c = Integer.parseInt(st.nextToken());
+            r = Integer.parseInt(st.nextToken());
+            c = Integer.parseInt(st.nextToken());
 
             alphabets = new char[r][c];
 
@@ -28,74 +30,38 @@ public class BJ_1987_알파벳_2 {
                 alphabets[i] = br.readLine().toCharArray();
             }
 
-            int result = bfs(r, c);
-            System.out.println(result);
+            dfs(0, 0);
+
+            System.out.println(max);
 
         } catch (Exception ignored) {}
     }
 
-    static int bfs(int r, int c) {
-        Queue<Alphabet> queue = new ArrayDeque<>();
-        queue.add(new Alphabet(0, 0));
+    static void dfs(int x, int y) {
+        set.add(alphabets[x][y]);
+        max = Math.max(max, set.size());
 
-//        boolean[][] visited = new boolean[r][c];
+        if (max == 26) return;
 
-        int max = Integer.MIN_VALUE;
+        for (int i=0; i<mx.length; i++) {
+            int nx = x + mx[i];
+            int ny = y + my[i];
 
-        while (!queue.isEmpty()) {
-            Alphabet current = queue.poll();
-            current.add(alphabets[current.x][current.y]);
-
-//            System.out.println(current);
-
-            max = Math.max(max, current.size());
-
-//            if (visited[current.x][current.y]) continue;
-//
-//            visited[current.x][current.y] = true;
-
-            for (int i=0; i<mx.length; i++) {
-                int nx = current.x + mx[i];
-                int ny = current.y + my[i];
-
-                if (nx >= 0 && nx < r && ny >= 0 && ny < c && !current.contains(alphabets[nx][ny])) {
-                    Alphabet alphabet = new Alphabet(nx, ny, current.set);
-                    queue.add(alphabet);
-                }
+            if (nx >= 0 && nx < r && ny >= 0 && ny < c && !set.contains(alphabets[nx][ny])) {
+                dfs(nx, ny);
+                set.remove(alphabets[nx][ny]);
             }
         }
-
-        return max;
     }
+
 
     static class Alphabet {
         int x;
         int y;
 
-//        HashSet<Character> set = new LinkedHashSet<>();
-        HashSet<Character> set = new HashSet<>();
-
         public Alphabet(int x, int y) {
             this.x = x;
             this.y = y;
-        }
-
-        public Alphabet(int x, int y, HashSet<Character> set) {
-            this.x = x;
-            this.y = y;
-            this.set.addAll(set);
-        }
-
-        public void add(char c) {
-            set.add(c);
-        }
-
-        public boolean contains(char c) {
-            return set.contains(c);
-        }
-
-        public int size() {
-            return set.size();
         }
     }
 }
