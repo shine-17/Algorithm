@@ -15,6 +15,7 @@ public class BJ_11444_피보나치수6 {
 
 
 
+
         } catch (Exception ignored) {}
     }
 }
